@@ -41,7 +41,7 @@ if User_Sudo ~= '' then
  token = database:get(Server_Tshake.."Token_Tshake")
 local url , res = https.request('https://api.telegram.org/bot'..token..'/getMe')
 
-local User_Info =  JSON.decode(url) 
+local User_Info =  JSON.decode(res) 
  
  
  

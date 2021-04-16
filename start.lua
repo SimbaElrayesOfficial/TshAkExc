@@ -39,9 +39,10 @@ io.write('\n\27[1;35mSend UserName For Sudo : ارسل معرف المطور ا�
 local User_Sudo = io.read():gsub('@','')
 if User_Sudo ~= '' then
  token = database:get(Server_Tshake.."Token_Tshake")
-local url , res = https.request('https://api.telegram.org/bot'..token..'/getMe')
+ print("Get Token",token)
+local   getaaa = https.request('https://api.telegram.org/bot'..token..'/getMe')
 
-local User_Info =  JSON.decode(res) 
+local User_Info =  JSON.decode(getaaa) 
  
  
  

@@ -21,46 +21,38 @@ print("\27[1;34m»» Send Your Token Bot :\27[m")
 local token = io.read()
 if token ~= '' then
 local url , res = https.request('https://api.telegram.org/bot'..token..'/getMe')
-local User_Info_bot = JSON.decode(url) 
 if res ~= 200 then
 io.write('\n\27[1;31m»» Sorry The Token is not Correct \n\27[0;39;49m')
 else
 io.write('\n\27[1;31m»» The Token Is Saved\n\27[0;39;49m')
-database:set(Server_Tshake.."Token_Tshake",token)
 
 io.write('\n\27[1;35mSend UserName For Sudo : ارسل معرف المطور الاساسي ...\n\27[0;39;49m')
 local User_Sudo = io.read():gsub('@','')
 if User_Sudo ~= '' then
- 
- 
- 
+local url , res = https.request('https://api.telegram.org/bot'..token..'/getMe')
+
+local User_Info =  JSON.decode(url) 
  
  
  
 io.write('\n\27[1;31m• The UserNamr Is Saved : تم حفظ معرف المطور الاسي واستخراج ايدي \n\27[0;39;49m')
- 
-database:set(Server_Tshake.."UserName_Tshake",User_Info_bot.result.username)
-database:set(Server_Tshake.."Id_Tshake",User_Info_bot.result.id)
-
+ database:set(Server_Tshake.."Token_Tshake",token)
+database:set(Server_Tshake.."UserName_Tshake",User_Info.result.username)
+database:set(Server_Tshake.."Id_Tshake",User_Info.result.id)
 else
 io.write('\n\27[1;31mThe UserName was not Saved : لم يتم حفظ معرف Carbon\n\27[0;39;49m')
-end 
-
+end
+os.execute('lua start.lua')
 end 
 else
 io.write('\n\27[1;31mThe Tokem was not Saved\n\27[0;39;49m')
 end 
-os.execute('lua start.lua')
 
-
-
-
-
- 
 end
 ------------------------------------------------------------------------------------------------------------
 ------------------------------------------------------------------------------------------------------------
  
+
 local function Files_Tshake_Info()
 Create_Info(database:get(Server_Tshake.."Token_Tshake"),database:get(Server_Tshake.."Id_Tshake"),database:get(Server_Tshake.."UserName_Tshake"))   
 local RunTshake = io.open("Tshake", 'w')
